@@ -2,13 +2,19 @@
 
 下面包含三种常用方式：Vercel（推荐，零运维）、Netlify、以及 Docker 自托管。
 
-1) Vercel（最快）
+1) GitHub Pages（推荐）
+- 把项目推到 GitHub，并确保主分支为 `main`。
+- 我已经在仓库中添加了 GitHub Actions workflow：`.github/workflows/gh-pages.yml`。
+- 只要你把项目推送到远程仓库，GitHub Actions 会自动构建并将 `dist` 发布到 `gh-pages` 分支。
+- 部署 URL 形式通常为：`https://<username>.github.io/<repository>/`。
+
+2) Vercel（最快）
 - 把项目推到 GitHub（或 GitLab/Bitbucket）。
 - 在 Vercel 控制台新建项目，连接你的仓库。
 - 构建命令：`npm run build`，发布目录：`dist`。
 - 项目创建后，Vercel 会给出一个公网 URL（支持自定义域名与 HTTPS）。
 
-2) Netlify
+3) Netlify
 - 把项目推到 GitHub。
 - 在 Netlify 新建站点，选择仓库并设置构建命令 `npm run build`，发布目录 `dist`。
 - 添加 `netlify.toml`（已包含于仓库）以确保 SPA 路由重写。
